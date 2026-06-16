@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maison Élora — Montres élégantes pour femme</title>
+  <meta name="description" content="Une montre féminine au design rectangulaire, cadran à chiffres romains, aiguilles bleues et bracelets raffinés en trois teintes." />
+  <meta name="theme-color" content="#FAFAF9" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAFAF9;
+      --bg-soft: #F4EEE7;
+      --surface: rgba(255,255,255,.74);
+      --surface-solid: #FFFFFF;
+      --ink: #0C0A09;
+      --muted: #6F665E;
+      --line: #D6D3D1;
+      --primary: #1C1917;
+      --primary-2: #44403C;
+      --accent: #A16207;
+      --accent-soft: #E7D2B6;
+      --champagne: #EADBC8;
+      --shadow: 0 24px 70px rgba(28,25,23,.13);
+      --shadow-soft: 0 18px 48px rgba(28,25,23,.09);
+      --radius-sm: 14px;
+      --radius: 24px;
+      --radius-lg: 36px;
+      --container: 1180px;
+      --ease: cubic-bezier(.2,.8,.2,1);
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(234,219,200,.78), transparent 30%),
+        radial-gradient(circle at 88% 16%, rgba(214,211,209,.38), transparent 28%),
+        var(--bg);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid rgba(161,98,7,.4); outline-offset: 4px; border-radius: 12px; }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 9999;
+      transform: translateY(-160%);
+      background: var(--primary);
+      color: white;
+      padding: 12px 16px;
+      border-radius: 999px;
+      transition: transform .2s var(--ease);
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .container {
+      width: min(100% - 32px, var(--container));
+      margin-inline: auto;
+    }
+
+    .announcement {
+      background: #1C1917;
+      color: rgba(255,255,255,.88);
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 10px 16px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px) saturate(1.15);
+      background: rgba(250,250,249,.78);
+      border-bottom: 1px solid rgba(214,211,209,.72);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--serif);
+      font-size: clamp(20px, 2vw, 27px);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--primary);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: var(--serif);
+      font-size: 15px;
+      letter-spacing: 0;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .nav-links a { transition: color .2s var(--ease); }
+    .nav-links a:hover { color: var(--ink); }
+
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      padding: 14px 22px;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: .02em;
+      cursor: pointer;
+      transition: transform .22s var(--ease), box-shadow .22s var(--ease), background .22s var(--ease), color .22s var(--ease), border-color .22s var(--ease);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 16px 34px rgba(28,25,23,.16);
+    }
+    .btn-primary:hover { background: #0C0A09; box-shadow: 0 18px 46px rgba(28,25,23,.22); }
+    .btn-secondary {
+      background: rgba(255,255,255,.62);
+      color: var(--primary);
+      border-color: rgba(28,25,23,.16);
+      backdrop-filter: blur(14px);
+    }
+    .btn-secondary:hover { border-color: rgba(28,25,23,.34); background: rgba(255,255,255,.86); }
+    .btn-nav { min-height: 44px; padding: 10px 18px; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: calc(100dvh - 112px);
+      display: grid;
+      align-items: stretch;
+      border-bottom: 1px solid rgba(214,211,209,.72);
+    }
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(250,250,249,.98) 0%, rgba(250,250,249,.86) 34%, rgba(250,250,249,.28) 62%, rgba(250,250,249,.04) 100%);
+    }
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: clamp(72px, 9vw, 132px) 0 clamp(52px, 7vw, 90px);
+      display: grid;
+      align-items: center;
+    }
+    .hero-copy { max-width: 600px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 44px;
+      height: 1px;
+      background: var(--accent);
+      opacity: .65;
+    }
+    h1, h2, h3 { margin: 0; font-family: var(--serif); line-height: .98; color: var(--ink); }
+    h1 {
+      font-size: clamp(54px, 8.1vw, 112px);
+      letter-spacing: -.055em;
+      max-width: 760px;
+    }
+    .lead {
+      max-width: 530px;
+      margin: 24px 0 0;
+      color: #4B443E;
+      font-size: clamp(17px, 1.3vw, 20px);
+      line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px; }
+    .hero-trust {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 42px;
+      max-width: 620px;
+    }
+    .trust-pill {
+      min-height: 76px;
+      padding: 16px;
+      border: 1px solid rgba(214,211,209,.82);
+      background: rgba(255,255,255,.62);
+      backdrop-filter: blur(16px);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 12px 28px rgba(28,25,23,.05);
+    }
+    .trust-pill strong { display: block; font-size: 13px; color: var(--primary); margin-bottom: 2px; }
+    .trust-pill span { display: block; font-size: 12px; color: var(--muted); line-height: 1.45; }
+
+    section { padding: clamp(72px, 9vw, 132px) 0; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(260px, .55fr);
+      gap: 40px;
+      align-items: end;
+      margin-bottom: clamp(34px, 5vw, 64px);
+    }
+    .section-kicker {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+    h2 { font-size: clamp(39px, 5.5vw, 78px); letter-spacing: -.045em; }
+    h3 { font-size: clamp(25px, 2.8vw, 42px); letter-spacing: -.035em; line-height: 1.06; }
+    .section-copy { color: var(--muted); font-size: 16px; line-height: 1.75; margin: 0; }
+
+    .collection-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    .media-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      background: var(--surface-solid);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(214,211,209,.7);
+    }
+    .media-card img { width: 100%; height: 100%; object-fit: cover; }
+    .media-card.tall { min-height: 580px; }
+    .product-panel {
+      padding: clamp(28px, 4vw, 46px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 34px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, rgba(255,255,255,.86), rgba(244,238,231,.76));
+      border: 1px solid rgba(214,211,209,.78);
+      box-shadow: var(--shadow-soft);
+    }
+    .product-panel p { margin: 16px 0 0; color: var(--muted); line-height: 1.75; }
+    .swatches { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+    .swatch {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(28,25,23,.12);
+      background: rgba(255,255,255,.62);
+      color: #332E2A;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .dot { width: 16px; height: 16px; border-radius: 50%; border: 1px solid rgba(28,25,23,.16); display: inline-block; }
+    .dot.black { background: #0E0E0E; }
+    .dot.blush { background: #E6B9BE; }
+    .dot.camel { background: #B88768; }
+    .spec-list { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+    .spec-list li {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding-top: 14px;
+      border-top: 1px solid rgba(28,25,23,.1);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .spec-list strong { display: block; color: var(--ink); font-size: 14px; margin-bottom: 2px; }
+    .icon {
+      width: 28px;
+      height: 28px;
+      color: var(--accent);
+    }
+
+    .editorial-band {
+      background: #161412;
+      color: white;
+      overflow: hidden;
+    }
+    .editorial-band h2, .editorial-band h3 { color: white; }
+    .editorial-band .section-copy { color: rgba(255,255,255,.68); }
+    .editorial-layout {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: clamp(24px, 5vw, 70px);
+      align-items: center;
+    }
+    .dark-image {
+      aspect-ratio: 4 / 5;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 30px 90px rgba(0,0,0,.42);
+    }
+    .dark-image img { height: 100%; object-fit: cover; }
+    .quote-line {
+      margin: 32px 0;
+      height: 1px;
+      width: 100%;
+      background: linear-gradient(90deg, rgba(255,255,255,.5), rgba(255,255,255,0));
+    }
+    .micro-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 34px;
+    }
+    .micro-card {
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      border-radius: 18px;
+      padding: 18px;
+    }
+    .micro-card strong { display: block; font-size: 22px; font-family: var(--serif); margin-bottom: 4px; }
+    .micro-card span { color: rgba(255,255,255,.62); font-size: 12px; }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      align-items: center;
+    }
+    .split-copy { padding: clamp(20px, 4vw, 62px); }
+    .split-copy p { color: var(--muted); margin: 20px 0 0; line-height: 1.8; }
+    .feature-points {
+      display: grid;
+      gap: 16px;
+      margin-top: 30px;
+    }
+    .feature-point {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 17px 0;
+      border-top: 1px solid rgba(214,211,209,.85);
+      color: var(--muted);
+    }
+    .feature-point strong { color: var(--ink); display: block; margin-bottom: 3px; }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 22px;
+      min-height: 790px;
+    }
+    .image-grid .large { grid-row: 1 / span 2; }
+    .image-grid .media-card { border-radius: 30px; }
+    .image-grid img { height: 100%; object-fit: cover; }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .benefit-card {
+      border: 1px solid rgba(214,211,209,.82);
+      background: rgba(255,255,255,.64);
+      backdrop-filter: blur(14px);
+      border-radius: var(--radius);
+      padding: 24px;
+      min-height: 210px;
+      box-shadow: 0 12px 38px rgba(28,25,23,.05);
+    }
+    .benefit-card .icon { margin-bottom: 22px; }
+    .benefit-card h3 { font-family: var(--sans); font-size: 18px; letter-spacing: -.02em; line-height: 1.25; }
+    .benefit-card p { margin: 10px 0 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+
+    .gift {
+      background: linear-gradient(180deg, #FAFAF9, #F4EEE7);
+    }
+    .gift-card {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 0;
+      overflow: hidden;
+      border-radius: 42px;
+      background: var(--surface-solid);
+      border: 1px solid rgba(214,211,209,.84);
+      box-shadow: var(--shadow);
+    }
+    .gift-card .media-card { border: 0; border-radius: 0; box-shadow: none; }
+    .gift-card .copy { padding: clamp(34px, 6vw, 74px); align-self: center; }
+    .gift-card p { color: var(--muted); margin: 20px 0 0; line-height: 1.8; }
+    .gift-note {
+      margin-top: 26px;
+      padding: 16px 18px;
+      background: #FAFAF9;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .review-card {
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(214,211,209,.82);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 12px 36px rgba(28,25,23,.05);
+    }
+    .rating { color: var(--accent); font-size: 14px; letter-spacing: .08em; font-weight: 800; }
+    .review-card p { color: #4B443E; margin: 14px 0 18px; line-height: 1.75; }
+    .review-card span { color: var(--muted); font-size: 13px; font-weight: 600; }
+    .placeholder-note {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      background: rgba(255,255,255,.6);
+      padding: 12px 14px;
+      border: 1px dashed rgba(161,98,7,.36);
+      border-radius: 14px;
+    }
+
+    .cta-final {
+      position: relative;
+      overflow: hidden;
+      color: white;
+      padding: clamp(86px, 10vw, 150px) 0;
+    }
+    .cta-final::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(28,25,23,.94), rgba(28,25,23,.72), rgba(28,25,23,.18));
+      z-index: 1;
+    }
+    .cta-final img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .cta-final .container { position: relative; z-index: 2; }
+    .cta-box { max-width: 560px; }
+    .cta-final h2 { color: white; }
+    .cta-final p { color: rgba(255,255,255,.74); margin: 20px 0 0; font-size: 18px; line-height: 1.75; }
+    .cta-final .btn-primary { background: white; color: var(--primary); }
+    .cta-final .btn-primary:hover { background: #F4EEE7; }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      gap: 42px;
+      align-items: start;
+    }
+    details {
+      border-top: 1px solid var(--line);
+      padding: 22px 0;
+    }
+    details:last-child { border-bottom: 1px solid var(--line); }
+    summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-weight: 700;
+      color: var(--primary);
+      min-height: 44px;
+      align-items: center;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "+";
+      font-family: var(--serif);
+      font-size: 25px;
+      color: var(--accent);
+      line-height: 1;
+      transition: transform .22s var(--ease);
+    }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { color: var(--muted); margin: 12px 0 0; max-width: 720px; }
+
+    footer {
+      padding: 48px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+    @media (max-width: 980px) {
+      .nav-links { display: none; }
+      .hero {
+        min-height: auto;
+        display: block;
+        padding: 0;
+      }
+      .hero-media { position: relative; aspect-ratio: 4 / 5; }
+      .hero-media::after { background: linear-gradient(180deg, rgba(250,250,249,.05), rgba(250,250,249,.68) 62%, rgba(250,250,249,.98)); }
+      .hero-content { padding: 34px 0 54px; }
+      .hero-copy { max-width: none; }
+      .hero-trust, .section-head, .collection-grid, .editorial-layout, .split, .gift-card, .faq-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-trust { margin-top: 30px; }
+      .media-card.tall { min-height: auto; aspect-ratio: 4 / 5; }
+      .benefits { grid-template-columns: repeat(2, 1fr); }
+      .image-grid { grid-template-columns: 1fr; grid-template-rows: auto; min-height: auto; }
+      .image-grid .large { grid-row: auto; }
+      .image-grid .media-card { aspect-ratio: 4 / 5; }
+      .gift-card .media-card { aspect-ratio: 4 / 5; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 22px, var(--container)); }
+      .announcement { font-size: 10px; padding: 9px 10px; }
+      .nav { min-height: 64px; }
+      .brand { font-size: 18px; gap: 9px; }
+      .brand-mark { width: 30px; height: 30px; }
+      .btn-nav { display: none; }
+      h1 { font-size: clamp(46px, 15vw, 72px); }
+      .lead { font-size: 16px; }
+      .hero-actions .btn { width: 100%; }
+      .hero-trust { grid-template-columns: 1fr; gap: 10px; }
+      section { padding: 68px 0; }
+      .product-panel { border-radius: 28px; }
+      .benefits, .reviews, .micro-grid { grid-template-columns: 1fr; }
+      .gift-card { border-radius: 30px; }
+      .split-copy { padding: 20px 0; }
+      .footer-row { display: block; }
+      .footer-row p { margin: 8px 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu principal</a>
+  <div class="announcement">Nom de marque, prix, livraison et garanties à adapter avant mise en ligne</div>
+
+  <header aria-label="Navigation principale">
+    <div class="container nav">
+      <a href="#top" class="brand" aria-label="Maison Élora accueil"><span class="brand-mark" aria-hidden="true">É</span> Maison Élora</a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#collection">Collection</a>
+        <a href="#details">Détails</a>
+        <a href="#style">Style</a>
+        <a href="#gift">Cadeau</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn btn-primary btn-nav" href="#collection">Découvrir</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <picture class="hero-media">
+        <source media="(max-width: 980px)" srcset="assets/images/hero-mobile.webp" type="image/webp">
+        <source srcset="assets/images/hero-desktop.webp" type="image/webp">
+        <img src="assets/images/hero-desktop.jpg" width="1376" height="768" alt="Montre féminine à bracelet camel présentée dans un décor lumineux et raffiné" fetchpriority="high">
+      </picture>
+      <div class="container hero-content">
+        <div class="hero-copy">
+          <span class="eyebrow">Quiet luxury</span>
+          <h1 id="hero-title">L’élégance qui se porte sans effort.</h1>
+          <p class="lead">Une montre rectangulaire au cadran romain, pensée comme une pièce signature : discrète, féminine et assez raffinée pour accompagner chaque moment.</p>
+          <div class="hero-actions" aria-label="Actions principales">
+            <a href="#collection" class="btn btn-primary">Choisir ma couleur</a>
+            <a href="#details" class="btn btn-secondary">Voir les détails</a>
+          </div>
+          <div class="hero-trust" aria-label="Arguments principaux">
+            <div class="trust-pill"><strong>3 teintes</strong><span>Noir classique, rose doux, camel chaud.</span></div>
+            <div class="trust-pill"><strong>Design intemporel</strong><span>Cadran romain, silhouette rectangulaire.</span></div>
+            <div class="trust-pill"><strong>À offrir ou garder</strong><span>Un style cadeau sans promesse packaging.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="collection" aria-labelledby="collection-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">La collection</span>
+            <h2 id="collection-title">Trois nuances. Une même silhouette.</h2>
+          </div>
+          <p class="section-copy">La collection repose sur un design volontairement simple : un boîtier argenté, un cadran clair à chiffres romains et trois bracelets faciles à associer.</p>
+        </div>
+        <div class="collection-grid">
+          <figure class="media-card tall" aria-label="Les trois variantes de la montre">
+            <picture>
+              <source srcset="assets/images/collection-compare.webp" type="image/webp">
+              <img src="assets/images/collection-compare.jpg" width="928" height="1152" alt="Les trois montres de la collection en bracelet noir, rose et camel" loading="lazy">
+            </picture>
+          </figure>
+          <div class="product-panel">
+            <div>
+              <span class="section-kicker">Choisir sa teinte</span>
+              <h3>Une montre qui change d’expression selon le bracelet.</h3>
+              <p>Le noir apporte une note classique, le rose adoucit la silhouette, le camel réchauffe le style. Même cadran, trois façons de la porter.</p>
+              <div class="swatches" aria-label="Couleurs disponibles">
+                <span class="swatch"><span class="dot black" aria-hidden="true"></span>Noir</span>
+                <span class="swatch"><span class="dot blush" aria-hidden="true"></span>Rose</span>
+                <span class="swatch"><span class="dot camel" aria-hidden="true"></span>Camel</span>
+              </div>
+            </div>
+            <ul class="spec-list" aria-label="Caractéristiques visuelles">
+              <li>
+                <svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M6 7h12M6 17h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                <span><strong>Silhouette rectangulaire</strong>Une forme plus bijou que sportive, facile à associer à une tenue élégante.</span>
+              </li>
+              <li>
+                <svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h16M12 4v16M7 7l10 10M17 7 7 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                <span><strong>Aiguilles bleues</strong>Un détail visuel fort qui contraste avec le cadran clair.</span>
+              </li>
+              <li>
+                <svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4h10v16H7zM10 7v10M14 7v10" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                <span><strong>Cadran romain</strong>Un style classique, lisible et immédiatement reconnaissable.</span>
+              </li>
+            </ul>
+            <a href="#checkout" class="btn btn-primary">Préparer la fiche produit</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="editorial-band" id="details" aria-labelledby="details-title">
+      <div class="container editorial-layout">
+        <figure class="dark-image">
+          <picture>
+            <source srcset="assets/images/macro-detail.webp" type="image/webp">
+            <img src="assets/images/macro-detail.jpg" width="928" height="1152" alt="Gros plan du cadran romain, des aiguilles bleues et du boîtier argenté" loading="lazy">
+          </picture>
+        </figure>
+        <div>
+          <span class="section-kicker">Le détail qui change tout</span>
+          <h2 id="details-title">Précise dans les lignes. Douce dans l’allure.</h2>
+          <p class="section-copy">Le cadran romain donne la structure. Les aiguilles bleues créent le contraste. Le boîtier argenté apporte une finition lumineuse sans excès.</p>
+          <div class="quote-line" aria-hidden="true"></div>
+          <h3>Un design pensé pour se remarquer sans trop parler.</h3>
+          <div class="micro-grid">
+            <div class="micro-card"><strong>01</strong><span>Cadran clair</span></div>
+            <div class="micro-card"><strong>02</strong><span>Boîtier argenté</span></div>
+            <div class="micro-card"><strong>03</strong><span>Bracelet texturé</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="style" aria-labelledby="style-title">
+      <div class="container split">
+        <div class="split-copy">
+          <span class="section-kicker">Portée au quotidien</span>
+          <h2 id="style-title">Une pièce discrète pour compléter une tenue.</h2>
+          <p>Elle n’a pas besoin d’être imposante pour donner du caractère. Sur une chemise ivoire, un manteau camel ou une tenue noire, elle ajoute une finition élégante au geste.</p>
+          <div class="feature-points">
+            <div class="feature-point">
+              <svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12c4-7 10-7 14 0-4 7-10 7-14 0Z" stroke="currentColor" stroke-width="1.6"/><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="1.6"/></svg>
+              <div><strong>Visible sans être excessive</strong>Un format féminin, facile à porter, qui garde une vraie présence au poignet.</div>
+            </div>
+            <div class="feature-point">
+              <svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 21h10M12 17V3M6 9l6-6 6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div><strong>Perception premium immédiate</strong>Des visuels orientés matière, lumière et composition pour sortir du rendu marketplace.</div>
+            </div>
+          </div>
+        </div>
+        <figure class="media-card tall">
+          <picture>
+            <source srcset="assets/images/lifestyle-primary.webp" type="image/webp">
+            <img src="assets/images/lifestyle-primary.jpg" width="768" height="1376" alt="Montre portée avec une tenue élégante dans un décor café premium" loading="lazy">
+          </picture>
+        </figure>
+      </div>
+    </section>
+
+    <section aria-labelledby="visual-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Éditorial</span>
+            <h2 id="visual-title">Une montre, plusieurs moments.</h2>
+          </div>
+          <p class="section-copy">Le but de la landing : faire ressentir un univers, puis rassurer sur le produit. Les visuels lifestyle vendent le désir, les gros plans vendent la finition.</p>
+        </div>
+        <div class="image-grid">
+          <figure class="media-card large">
+            <picture>
+              <source srcset="assets/images/editorial-vertical.webp" type="image/webp">
+              <img src="assets/images/editorial-vertical.jpg" width="768" height="1376" alt="Montre portée avec manteau camel et tenue élégante" loading="lazy">
+            </picture>
+          </figure>
+          <figure class="media-card">
+            <picture>
+              <source srcset="assets/images/pedestal-square.webp" type="image/webp">
+              <img src="assets/images/pedestal-square.jpg" width="1024" height="1024" alt="Montre présentée sur un socle minimal en marbre clair" loading="lazy">
+            </picture>
+          </figure>
+          <figure class="media-card">
+            <picture>
+              <source srcset="assets/images/collection-editorial.webp" type="image/webp">
+              <img src="assets/images/collection-editorial.jpg" width="1024" height="1024" alt="Les trois montres de la collection dans une composition éditoriale" loading="lazy">
+            </picture>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="benefits-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Pourquoi elle fonctionne</span>
+            <h2 id="benefits-title">Les bons codes visuels pour vendre une montre féminine premium.</h2>
+          </div>
+          <p class="section-copy">La page ne promet pas plus que le produit. Elle améliore la perception par le style, la lumière, la hiérarchie et la clarté de l’offre.</p>
+        </div>
+        <div class="benefits">
+          <article class="benefit-card">
+            <svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            <h3>Perception de valeur</h3>
+            <p>Visuels cohérents, fonds premium, cadrages éditoriaux et beaucoup d’espace blanc.</p>
+          </article>
+          <article class="benefit-card">
+            <svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16v10H4zM8 7v10M16 7v10" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            <h3>Offre compréhensible</h3>
+            <p>Les trois couleurs sont montrées clairement pour réduire l’hésitation.</p>
+          </article>
+          <article class="benefit-card">
+            <svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-4.4 7-11a4 4 0 0 0-7-2.6A4 4 0 0 0 5 10c0 6.6 7 11 7 11Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            <h3>Angle cadeau</h3>
+            <p>L’univers suggère le cadeau sans promettre un packaging final non validé.</p>
+          </article>
+          <article class="benefit-card">
+            <svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.6"/></svg>
+            <h3>CTA répétés</h3>
+            <p>La page répète l’action principale après les moments-clés de persuasion.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gift" id="gift" aria-labelledby="gift-title">
+      <div class="container">
+        <div class="gift-card">
+          <figure class="media-card">
+            <picture>
+              <source srcset="assets/images/gift-ad-feed.webp" type="image/webp">
+              <img src="assets/images/gift-ad-feed.jpg" width="768" height="1376" alt="Montre présentée sur tissu satiné avec ruban et fleurs, ambiance cadeau premium sans packaging spécifique" loading="lazy">
+            </picture>
+          </figure>
+          <div class="copy">
+            <span class="section-kicker">À offrir ou garder</span>
+            <h2 id="gift-title">Un détail raffiné, pensé pour faire plaisir.</h2>
+            <p>Le ruban, les fleurs et les matières douces installent l’idée du cadeau, sans montrer de coffret précis. La page reste volontairement prudente : elle vend l’émotion sans promettre un packaging final non confirmé.</p>
+            <div class="gift-note"><strong>Note projet :</strong> quand le packaging réel sera validé, remplace ce bloc par une vraie section “coffret”, avec photo exacte du coffret livré.</div>
+            <div class="hero-actions">
+              <a href="#collection" class="btn btn-primary">Voir les couleurs</a>
+              <a href="#faq" class="btn btn-secondary">Lire la FAQ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="reviews-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Réassurance</span>
+            <h2 id="reviews-title">Une page prête pour les preuves sociales.</h2>
+          </div>
+          <p class="section-copy">Je n’ai pas inventé de faux avis. Cette section est prévue pour recevoir tes vrais retours clientes, photos UGC ou avis vérifiés.</p>
+        </div>
+        <div class="reviews">
+          <article class="review-card">
+            <div class="rating" aria-label="Emplacement note client">★★★★★</div>
+            <p>“Avis cliente à intégrer après commande réelle. Idéalement : ressenti sur la taille, la couleur, le rendu au poignet.”</p>
+            <span>Prénom — achat vérifié</span>
+          </article>
+          <article class="review-card">
+            <div class="rating" aria-label="Emplacement note client">★★★★★</div>
+            <p>“Utilise ici un vrai avis avec photo ou vidéo. Ne mets pas de faux témoignages, ça fragilise la confiance long terme.”</p>
+            <span>Prénom — achat vérifié</span>
+          </article>
+          <article class="review-card">
+            <div class="rating" aria-label="Emplacement note client">★★★★★</div>
+            <p>“Le meilleur format : une phrase courte, naturelle, avec un détail concret sur la montre ou la livraison.”</p>
+            <span>Prénom — achat vérifié</span>
+          </article>
+        </div>
+        <p class="placeholder-note">À remplacer avant lancement public par de vrais avis, ou à masquer tant que tu n’en as pas.</p>
+      </div>
+    </section>
+
+    <section id="checkout" class="cta-final" aria-labelledby="cta-title">
+      <picture>
+        <source media="(max-width: 780px)" srcset="assets/images/ad-space-story.webp" type="image/webp">
+        <source srcset="assets/images/ad-space-feed.webp" type="image/webp">
+        <img src="assets/images/ad-space-feed.jpg" width="928" height="1152" alt="Montre sur socle clair avec espace visuel pour texte" loading="lazy">
+      </picture>
+      <div class="container">
+        <div class="cta-box">
+          <span class="section-kicker">Collection signature</span>
+          <h2 id="cta-title">Prête à créer ta fiche produit finale ?</h2>
+          <p>Ajoute ici le prix, le lien panier, les délais de livraison, les garanties réelles et les variantes exactes disponibles.</p>
+          <div class="hero-actions">
+            <a href="#collection" class="btn btn-primary">Choisir une teinte</a>
+            <a href="#faq" class="btn btn-secondary">Vérifier les infos</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" aria-labelledby="faq-title">
+      <div class="container faq-grid">
+        <div>
+          <span class="section-kicker">FAQ</span>
+          <h2 id="faq-title">Infos à confirmer avant lancement.</h2>
+          <p class="section-copy">Cette FAQ est volontairement prudente. Remplace les réponses dès que tu as les vraies données fournisseur : dimensions, matière, étanchéité, garantie, délais.</p>
+        </div>
+        <div>
+          <details open>
+            <summary>Quels éléments dois-je confirmer avant mise en ligne ?</summary>
+            <p>La matière exacte du bracelet, le type de mouvement, les dimensions, l’étanchéité éventuelle, le poids, le packaging réel, le délai de livraison et les conditions de retour.</p>
+          </details>
+          <details>
+            <summary>Puis-je parler de “cuir” ?</summary>
+            <p>Uniquement si le fournisseur confirme que c’est du cuir véritable. Sinon, utilise “bracelet texturé”, “bracelet effet cuir” ou une formulation neutre.</p>
+          </details>
+          <details>
+            <summary>Puis-je utiliser les visuels avec coffret ?</summary>
+            <p>Pas comme promesse de livraison tant que le packaging réel n’est pas validé. Utilise plutôt les visuels cadeau sans coffret défini.</p>
+          </details>
+          <details>
+            <summary>Quelle section masquer si je lance vite ?</summary>
+            <p>Masque la section avis si tu n’as pas encore de preuves sociales réelles. Garde la collection, les détails, le lifestyle, la FAQ et les CTA.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <p>© Maison Élora — nom provisoire à remplacer.</p>
+      <p>Landing page premium statique — HTML/CSS responsive.</p>
+    </div>
+  </footer>
+</body>
+</html>
